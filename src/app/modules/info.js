@@ -1,19 +1,19 @@
 export default function Info({props}) {
     return (
-      <section>
-        <article>
+      <section id="info-box">
+        <article className="info"> 
             <h2>IP Address</h2>
             <p>{props.IP}</p>
         </article>
-        <article>
+        <article className="info">
             <h2>Location</h2>
             <p>{props.location}</p>
         </article>
-        <article>
+        <article className="info">
             <h2>Timezone</h2>
             <p>{props.timezone}</p>
         </article>
-        <article>
+        <article className="info">
             <h2>Isp</h2>
             <p>{props.isp}</p>
         </article>

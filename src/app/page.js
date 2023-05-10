@@ -8,7 +8,7 @@ import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
 
 export default function Home() {
- //const apiKey = "at_6Vch9eHGKqyPXu8zYo0kIRaqEZPUr&ipAddress="
+ const apiKey = "at_sD33mvFr5C0oUMZ5YqcaHwsF5UHhV&ipAddress="
   const [clientsIP ,setClientsIP]  = useState(null)
   const [lat, setLat] = useState(51.505);
   const [lng, setLng] = useState(-0.09);
@@ -37,10 +37,17 @@ const handleChange = (e) => {
 const handleClick =()=>{
   axios.get("https://geo.ipify.org/api/v2/country,city?apiKey=" + apiKey + searchedDetails)
   .then((data)=>
- {   setClientsIP(data);
+ { 
+  setClientsIP(data);
   setLat(clientsIP?.data?.location?.lat)
-      setLng(clientsIP?.data?.location?.lng);  
+  setLng(clientsIP?.data?.location?.lng);  
   console.log(data)})
+  .catch(function (error) {
+    if (error.response) {
+      alert('Only search fo IP address in valid format 000.000.000.000')
+    } 
+   
+  });
 }
 
   return (
