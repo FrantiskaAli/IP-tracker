@@ -1,13 +1,17 @@
 'use client'
-import Info from './modules/info'
+import Info from './info'
 import bg from './images/pattern-bg-desktop.png'
 import button from './images/icon-arrow.svg'
-import Map from './modules/map'
+import dynamic from 'next/dynamic'
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import 'leaflet/dist/leaflet.css';
+const Map= dynamic(() => import('./map'), { ssr: false });
+
 
 export default function Home() {
+
+
  const apiKey = "at_sD33mvFr5C0oUMZ5YqcaHwsF5UHhV&ipAddress="
   const [clientsIP ,setClientsIP]  = useState(null)
   const [lat, setLat] = useState(51.505);
@@ -59,11 +63,9 @@ const handleClick =()=>{
         <button onClick={()=>handleClick()} id="srcBtn" style={{backgroundImage: `url(${button.src})`}}></button> 
         </section>
       </header>
-   <Info
-      props={{IP: clientsIP?.data.ip ,location: clientsIP?.data?.location?.city, timezone: `UTC ${clientsIP?.data.location.timezone}`, isp:clientsIP?.data.isp}}
+   <Info {...{ip: clientsIP?.data.ip ,location: clientsIP?.data?.location?.city, timezone: `UTC ${clientsIP?.data.location.timezone}`, isp:clientsIP?.data.isp}}
       />
 <Map position={[lat,lng]}/>
-    {console.log(lat, lng)}
  
     </main>
   )

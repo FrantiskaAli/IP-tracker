@@ -1,9 +1,10 @@
-export default function Info({props}) {
+'use client'
+export default function Info(props) {
     return (
       <section id="info-box">
         <article className="info"> 
             <h2>IP Address</h2>
-            <p>{props.IP}</p>
+            <p>{props.ip}</p>
         </article>
         <article className="info">
             <h2>Location</h2>
