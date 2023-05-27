@@ -1,4 +1,4 @@
-# IP tracjer
+# IP tracker
 Frontend mentor challenge.
 ## Description
 
